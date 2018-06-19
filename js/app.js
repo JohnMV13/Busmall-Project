@@ -15,3 +15,23 @@ function displayImages() {
   img2.src = image2.src;
   img2.currentPlaceholder = image2;
 }
+
+var productImages = document.querySelectorAll("#voting img");
+for(var i =0; i < productImages.length; i++) {
+  productImages[i].addEventListener("click", function (event) {
+    console.log("click", event.target.currentPlaceholder);
+
+    displayImages();
+  });
+}
+
+function Placeholder(name, src) {
+  this.name = name;
+  this.src = src;
+
+  Placeholder.all.push(this);
+}
+Placeholder.all = [];
+
+new Placeholder("bag", "../img/bag.jpg");
+new Placeholder("breakfast", "img/breakfast.jpg")
