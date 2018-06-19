@@ -1,9 +1,10 @@
 "use strict"
 
-var nextImage = 0;
+
 function displayImages() {
+  var nextImage = 0;
   // Display First Image
-  var image1 = Placeholder.all[nextimage++];
+  var image1 = Placeholder.all[nextImage++];
   console.log(image1);
   var img1 = document.getElementById("product-1");
   img1.src = image1.src;
