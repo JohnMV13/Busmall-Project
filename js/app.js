@@ -1,8 +1,8 @@
 "use strict"
 
+var nextImage = 0;
 
 function displayImages() {
-  var nextImage = 0;
   // Display First Image
   var image1 = Placeholder.all[nextImage++];
   console.log(image1);
@@ -21,15 +21,15 @@ function displayImages() {
   var img3 = document.getElementById("product-3");
   img3.src = image3.src;
   img3.currentPlaceholder = image3;
+
+  return image;
 }
 
 var productImages = document.querySelectorAll("#voting img");
 for(var i =0; i < productImages.length; i++) {
   productImages[i].addEventListener("click", function (event) {
     console.log("click", event.target.currentPlaceholder);
-    voteCount++
 
-    console.log("click #" + voteCount);
     event.target.currentPlaceholder;
 
     displayImages();

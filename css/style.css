@@ -1,13 +1,14 @@
 body {
   padding-bottom: 50;
 }
+
+
 li {
   display: inline-block;
   padding: 10;
   box-align: left;
   margin-left: -30;
   margin-top: 100;
-  box-sizing: border-box -100;
   size: -100;
 }
 
