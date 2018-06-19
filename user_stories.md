@@ -1,0 +1,7 @@
+As a person, my first oblective for this project should be to create 2-3 html pages to provide users with a chance to choose a new product for the Bus Mall.
+As a content creator, I want my website to have 10 pictures of new product items for my company that visitors can choose from.
+As the creator of this page, I would like my pictures to * Appear in sets of three * Display new images whenever visitors select an image randomly while not repeating until every image has appeared once * Keep track of which pictures have been selected by the visitors of the page.
+As a person creating this system, I will need to create a cunstructor function to create objects that will represent these images that I have and will have *properties for the names of each image *the number of times each image has appeared *It's filepath *The number of times that the image has been selected.
+As the person making this page, I want to make it so that once the visitor has made 25 selections, it will turn of the event listeners to stop voting and to display a list which shows which product was the most voted.
+As the creator of this website, I will create an event listener to keep the votes going until the visitor has made 25 selections.
+As the creator of this page, I would like to make the page look nice and use a variety of different objects and make the pages interesting to look at.
