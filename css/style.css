@@ -1,5 +1,12 @@
-
-
+body {
+  padding-bottom: 50;
+}
+li {
+  display: inline-block;
+  padding: 10%;
+  box-align: left;
+  margin-left: -50;
+}
 
 
 
@@ -9,9 +16,13 @@
 
 
 footer {
+  display: inline;
+  background-color: black;
+  color: white;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
+  padding: 30;
 }

@@ -68,6 +68,8 @@ function showResults() {
   showResultChart();
 }
 
+
+
 function showResultChart() {
   var canvas = document.getElementById("resultsCanvas");
 
