@@ -1,44 +1,59 @@
 "use strict"
 
-var nextImage = 0;
 
+var nextImage = 0;
 function displayImages() {
   // Display First Image
-  var image1 = Placeholder.all[nextImage++];
+  var image1 = Placeholder.all[nextImage % Placeholder.all.length];
+  nextImage++
   console.log(image1);
   var img1 = document.getElementById("product-1");
   img1.src = image1.src;
   img1.currentPlaceholder = image1;
 
-  var image2 = Placeholder.all[nextImage++];
+  var image2 = Placeholder.all[nextImage % Placeholder.all.length];
+  nextImage++
   console.log(image2);
   var img2 = document.getElementById("product-2");
   img2.src = image2.src;
   img2.currentPlaceholder = image2;
 
-  var image3 = Placeholder.all[nextImage++];
+  var image3 = Placeholder.all[nextImage % Placeholder.all.length];
+  nextImage++
   console.log(image3);
   var img3 = document.getElementById("product-3");
   img3.src = image3.src;
   img3.currentPlaceholder = image3;
-
-  return image;
 }
+
+// var voteCount = 0;
+// function displayImages() {
+//   if (voteCount >= 25) {
+//     console.log("display results");
+
+//     return;
+//   }
+// }
 
 var productImages = document.querySelectorAll("#voting img");
 for(var i =0; i < productImages.length; i++) {
-  productImages[i].addEventListener("click", function (event) {
+  var thisImage = productImages[i];
+  thisImage.addEventListener("click", function (event) {
     console.log("click", event.target.currentPlaceholder);
+    this.voteCount++;
 
-    event.target.currentPlaceholder;
+    console.log("click #" + this.voteCount);
 
     displayImages();
   });
 }
 
-function Placeholder(name, src) {
+function Placeholder(name, src, testShowCount, testVoteCount) {
   this.name = name;
   this.src = src;
+  this.showCount = testShowCount || 0;
+  this.voteCount = testVoteCount || 0;
+
 
   Placeholder.all.push(this);
 }
