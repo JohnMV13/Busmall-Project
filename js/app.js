@@ -27,6 +27,10 @@ var productImages = document.querySelectorAll("#voting img");
 for(var i =0; i < productImages.length; i++) {
   productImages[i].addEventListener("click", function (event) {
     console.log("click", event.target.currentPlaceholder);
+    voteCount++
+
+    console.log("click #" + voteCount);
+    event.target.currentPlaceholder;
 
     displayImages();
   });
@@ -40,9 +44,13 @@ function Placeholder(name, src) {
 }
 Placeholder.all = [];
 
-new Placeholder("placekitten.com", "https://placekitten.com/g/150/150", 7, 2);
-new Placeholder("fillmurray.com", "http://fillmurray.com/150/150", 10,10);
-new Placeholder("placecage.com", "http://placecage.com/150/150", 6, 3);
+new Placeholder("bag", "../img/bag.jpg", 7, 2);
+new Placeholder("breakfast", "../img/breakfast.jpg", 10,10);
+new Placeholder("pen", "../img/pen.jpg", 6, 3);
+new Placeholder("scissors", "../img/scissors.jpg", 9, 5);
+new Placeholder("tauntaun", "../img/tauntaun.jpg", 8, 1);
+new Placeholder("usb", "../img/usb.gif", 9, 4);
+new Placeholder("wine-glass", "../img/wine-glass.jpg", 7,5);
 
 for (var i = 0; i < Placeholder.all.length; i++) {
   Placeholder.all[i].voteCount = Math.floor(5 + Math.random() * 500);
@@ -67,8 +75,6 @@ function showResults() {
 
   showResultChart();
 }
-
-
 
 function showResultChart() {
   var canvas = document.getElementById("resultsCanvas");
