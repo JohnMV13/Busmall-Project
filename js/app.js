@@ -15,6 +15,12 @@ function displayImages() {
   var img2 = document.getElementById("product-2");
   img2.src = image2.src;
   img2.currentPlaceholder = image2;
+
+  var image3 = Placeholder.all[nextImage++];
+  console.log(image3);
+  var img3 = document.getElementById("product-3");
+  img3.src = image3.src;
+  img3.currentPlaceholder = image3;
 }
 
 var productImages = document.querySelectorAll("#voting img");
