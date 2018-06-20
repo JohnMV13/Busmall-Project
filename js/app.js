@@ -51,8 +51,8 @@ for(var i =0; i < productImages.length; i++) {
 function Placeholder(name, src, testShowCount, testVoteCount) {
   this.name = name;
   this.src = src;
-  this.showCount = testShowCount //|| 0;
-  this.voteCount = testVoteCount //|| 0;
+  this.showCount = testShowCount || 0;
+  this.voteCount = testVoteCount || 0;
 
 
   Placeholder.all.push(this);
@@ -66,6 +66,8 @@ new Placeholder("scissors", "../img/scissors.jpg");
 new Placeholder("tauntaun", "../img/tauntaun.jpg");
 new Placeholder("usb", "../img/usb.gif");
 new Placeholder("wine-glass", "../img/wine-glass.jpg");
+new Placeholder("banana", "../img/banana.jpg");
+new Placeholder("bathroom", "../img/bathroom.jpg");
 
 for (var i = 0; i < Placeholder.all.length; i++) {
   Placeholder.all[i].voteCount = Math.floor(5 + Math.random() * 500);
