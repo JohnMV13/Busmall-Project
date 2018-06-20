@@ -12,7 +12,7 @@ function getNextImage() {
 
 var voteCount = 0;
 function displayImages() {
-  if (voteCount >= 25) {
+  if (voteCount >= 5) {
     console.log("display results");
     showResults();
     return;
@@ -51,21 +51,21 @@ for(var i =0; i < productImages.length; i++) {
 function Placeholder(name, src, testShowCount, testVoteCount) {
   this.name = name;
   this.src = src;
-  this.showCount = testShowCount || 0;
-  this.voteCount = testVoteCount || 0;
+  this.showCount = testShowCount //|| 0;
+  this.voteCount = testVoteCount //|| 0;
 
 
   Placeholder.all.push(this);
 }
 Placeholder.all = [];
 
-new Placeholder("bag", "../img/bag.jpg", 7, 2);
-new Placeholder("breakfast", "../img/breakfast.jpg", 10,10);
-new Placeholder("pen", "../img/pen.jpg", 6, 3);
-new Placeholder("scissors", "../img/scissors.jpg", 9, 5);
-new Placeholder("tauntaun", "../img/tauntaun.jpg", 8, 1);
-new Placeholder("usb", "../img/usb.gif", 9, 4);
-new Placeholder("wine-glass", "../img/wine-glass.jpg", 7,5);
+new Placeholder("bag", "../img/bag.jpg");
+new Placeholder("breakfast", "../img/breakfast.jpg");
+new Placeholder("pen", "../img/pen.jpg");
+new Placeholder("scissors", "../img/scissors.jpg");
+new Placeholder("tauntaun", "../img/tauntaun.jpg");
+new Placeholder("usb", "../img/usb.gif");
+new Placeholder("wine-glass", "../img/wine-glass.jpg");
 
 for (var i = 0; i < Placeholder.all.length; i++) {
   Placeholder.all[i].voteCount = Math.floor(5 + Math.random() * 500);
