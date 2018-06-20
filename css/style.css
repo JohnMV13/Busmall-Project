@@ -6,7 +6,6 @@ body {
 #voting li {
   padding: 1%;
   box-sizing: border-box;
-  margin-left: -30px;
   margin-top: 100px;
   width: 30%;
   float: left;
@@ -17,8 +16,10 @@ body {
 }
 
 section ul {
-  padding-top: 50%;
-  
+  position: initial;
+  padding-top: 60%;
+  box-sizing: border-box;
+
 }
 
 

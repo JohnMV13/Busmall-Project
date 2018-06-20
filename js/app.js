@@ -1,6 +1,40 @@
 "use strict"
 
-var maxVoteCount = 5;
+window.addEventListener("load", function onLoad() {
+  loadFromStorage();
+
+  if (Placeholder.all.length === 0) {
+    initialize();
+  }
+  displayImages();
+});
+
+function saveAll() {
+  localStorage["voteHistpry"] = JSON.stringify({ voteCount: Placeholder.voteCount });
+  localStorage("placeholders") = JSON.stringify(Placeholder.all);
+  console.log(localStorage);
+}
+
+function loadFromStorage() {
+  var jsonVoteHistoryString = localStorage["voteHistory"];
+  if (jsonVoteHistoryString) {
+    var voteHistory = JSON.parsel(jsonVoteHistoryString);
+    Placeholder.voteCount = voteHistory.voteCount;
+    console.log("setting voteCount to " + Placeholder.voteCount);
+  }
+
+  var jsonStringFromStorage = localStorage["placeholders"];
+  if (!jsonStringFromStorage)
+    return;
+
+  Placeholder.all = [];
+  var arrayFromStorage = JSON.parse(jsonStringFromStorage);
+  for (var i = 0; i < arrayFromStorage.length; i++) {
+    var arrayItem = arrayFromStorage[i];
+    new Placeholder(arrayItem.name, arrayItem.src, arrayItem.showCount, arrayItem.voteCount);
+  }
+  console.log("fromStorage", Placeholder.all);
+}
 
 function getNextImage() {
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
@@ -8,7 +42,6 @@ function getNextImage() {
 
   return image;
 }
-
 
 var voteCount = 0;
 function displayImages() {
