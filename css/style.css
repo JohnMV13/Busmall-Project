@@ -1,7 +1,18 @@
 body {
-  padding-bottom: 100;
+  padding-bottom: 100px;
+  background: linear-gradient(to right, rgb(23, 189, 50), rgb(66, 134, 244), rgb(217, 66, 244));
 }
 
+div {
+  background: linear-gradient( rgb(23, 189, 50), rgb(66, 134, 244), rgb(217, 66, 244));
+  font-size: 140%;
+  text-align: center;
+  
+}
+
+div img {
+  width: 30%;
+}
 
 #voting li {
   padding: 1%;
@@ -21,10 +32,6 @@ section ul {
   box-sizing: border-box;
 
 }
-
-
-
-
 
 
 footer {
