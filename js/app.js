@@ -39,9 +39,9 @@ for(var i =0; i < productImages.length; i++) {
   var thisImage = productImages[i];
   thisImage.addEventListener("click", function (event) {
     console.log("click", event.target.currentPlaceholder);
-    this.voteCount++;
+    voteCount++;
 
-    console.log("click #" + this.voteCount);
+    console.log("click #" + voteCount);
 
     displayImages();
   });
