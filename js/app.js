@@ -1,5 +1,6 @@
 "use strict"
 
+var maxVoteCount = 5;
 
 function getNextImage() {
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
