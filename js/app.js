@@ -1,39 +1,38 @@
 "use strict"
 
 
-var nextImage = 0;
+function getNextImage() {
+  var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
+  var image = Placeholder.all[nextIndex];
+
+  return image;
+}
+
+
+var voteCount = 0;
 function displayImages() {
-  // Display First Image
-  var image1 = Placeholder.all[nextImage % Placeholder.all.length];
-  nextImage++
-  console.log(image1);
+  if (voteCount >= 25) {
+    console.log("display results");
+    showResults();
+    return;
+  }
+
+  // Display image1
+  var image1 = getNextImage();
   var img1 = document.getElementById("product-1");
   img1.src = image1.src;
   img1.currentPlaceholder = image1;
 
-  var image2 = Placeholder.all[nextImage % Placeholder.all.length];
-  nextImage++
-  console.log(image2);
+  var image2 = getNextImage();
   var img2 = document.getElementById("product-2");
   img2.src = image2.src;
   img2.currentPlaceholder = image2;
 
-  var image3 = Placeholder.all[nextImage % Placeholder.all.length];
-  nextImage++
-  console.log(image3);
+  var image3 = getNextImage();
   var img3 = document.getElementById("product-3");
   img3.src = image3.src;
   img3.currentPlaceholder = image3;
 }
-
-// var voteCount = 0;
-// function displayImages() {
-//   if (voteCount >= 25) {
-//     console.log("display results");
-
-//     return;
-//   }
-// }
 
 var productImages = document.querySelectorAll("#voting img");
 for(var i =0; i < productImages.length; i++) {
@@ -129,6 +128,16 @@ function showResultChart() {
           data: votePercentage
         },
       ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            biginAtZero: true
+          }
+        }]
+      }
     },
     title: {
       display: true,
