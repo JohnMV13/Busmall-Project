@@ -1,5 +1,6 @@
 "use strict"
 
+var maxVoteCount = 5;
 
 function getNextImage() {
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
@@ -39,9 +40,9 @@ for(var i =0; i < productImages.length; i++) {
   var thisImage = productImages[i];
   thisImage.addEventListener("click", function (event) {
     console.log("click", event.target.currentPlaceholder);
-    this.voteCount++;
+    voteCount++;
 
-    console.log("click #" + this.voteCount);
+    console.log("click #" + voteCount);
 
     displayImages();
   });
