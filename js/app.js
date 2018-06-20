@@ -157,7 +157,7 @@ function showResultChart() {
         {
           label: "Vote Count",
           backgroundColor: "rgb(0, 0, 0)",
-          data: votePercentage
+          data: voteCounts
         },
       ]
     },
