@@ -1,19 +1,50 @@
 "use strict"
 
-var maxVoteCount = 5;
+// window.addEventListener("load", function onLoad() {
+//   loadFromStorage();
+
+//   if (Placeholder.all.length === 0) {
+//     initialize();
+//   }
+//   displayImages();
+// });
+
+// function saveAll() {
+//   localStorage["voteHistpry"] = JSON.stringify({ voteCount: Placeholder.voteCount });
+//   localStorage("placeholders") = JSON.stringify(Placeholder.all);
+//   console.log(localStorage);
+// }
+
+// function loadFromStorage() {
+//   var jsonVoteHistoryString = localStorage["voteHistory"];
+//   if (jsonVoteHistoryString) {
+//     var voteHistory = JSON.parsel(jsonVoteHistoryString);
+//     Placeholder.voteCount = voteHistory.voteCount;
+//     console.log("setting voteCount to " + Placeholder.voteCount);
+//   }
+
+//   var jsonStringFromStorage = localStorage["placeholders"];
+//   if (!jsonStringFromStorage)
+//     return;
+
+//   var arrayFromStorage = JSON.parse(jsonStringFromStorage);
+//   for (var i = 0; i < arrayFromStorage.length; i++) {
+//     var arrayItem = arrayFromStorage[i];
+//     new Placeholder(arrayItem.name, arrayItem.src, arrayItem.showCount, arrayItem.voteCount);
+//   }
+//   console.log("fromStorage", Placeholder.all);
+// }
 
 function getNextImage() {
+  // TODO: Write code to prevent the same random number being generated twice
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
   var image = Placeholder.all[nextIndex];
-
   return image;
 }
 
-
-var voteCount = 0;
+var totalVoteCount = 0;
 function displayImages() {
-  if (voteCount >= 25) {
-    console.log("display results");
+  if (totalVoteCount >= 5) {
     showResults();
     return;
   }
@@ -22,55 +53,55 @@ function displayImages() {
   var image1 = getNextImage();
   var img1 = document.getElementById("product-1");
   img1.src = image1.src;
+  image1.showCount++;
   img1.currentPlaceholder = image1;
 
   var image2 = getNextImage();
   var img2 = document.getElementById("product-2");
   img2.src = image2.src;
+  image2.showCount++;
   img2.currentPlaceholder = image2;
 
   var image3 = getNextImage();
   var img3 = document.getElementById("product-3");
   img3.src = image3.src;
+  image3.showCount++;
   img3.currentPlaceholder = image3;
+
+  console.log("updated Placeholders", Placeholder.all);
 }
 
 var productImages = document.querySelectorAll("#voting img");
 for(var i =0; i < productImages.length; i++) {
   var thisImage = productImages[i];
   thisImage.addEventListener("click", function (event) {
-    console.log("click", event.target.currentPlaceholder);
-    voteCount++;
-
-    console.log("click #" + voteCount);
-
+    var clickedPlaceholder = event.target.currentPlaceholder;
+    totalVoteCount++;
+    console.log("click #" + totalVoteCount);
+    clickedPlaceholder.voteCount++;
     displayImages();
   });
 }
 
-function Placeholder(name, src, testShowCount, testVoteCount) {
+function Placeholder(name, src) {
   this.name = name;
   this.src = src;
-  this.showCount = testShowCount || 0;
-  this.voteCount = testVoteCount || 0;
-
+  this.showCount = 0;
+  this.voteCount = 0; 
 
   Placeholder.all.push(this);
 }
 Placeholder.all = [];
 
-new Placeholder("bag", "../img/bag.jpg", 7, 2);
-new Placeholder("breakfast", "../img/breakfast.jpg", 10,10);
-new Placeholder("pen", "../img/pen.jpg", 6, 3);
-new Placeholder("scissors", "../img/scissors.jpg", 9, 5);
-new Placeholder("tauntaun", "../img/tauntaun.jpg", 8, 1);
-new Placeholder("usb", "../img/usb.gif", 9, 4);
-new Placeholder("wine-glass", "../img/wine-glass.jpg", 7,5);
-
-for (var i = 0; i < Placeholder.all.length; i++) {
-  Placeholder.all[i].voteCount = Math.floor(5 + Math.random() * 500);
-  Placeholder.all[i].showCount = Math.floor(20 + Math.random() * 1000);
-}
+new Placeholder("bag", "../img/bag.jpg");
+new Placeholder("breakfast", "../img/breakfast.jpg");
+new Placeholder("pen", "../img/pen.jpg");
+new Placeholder("scissors", "../img/scissors.jpg");
+new Placeholder("tauntaun", "../img/tauntaun.jpg");
+new Placeholder("usb", "../img/usb.gif");
+new Placeholder("wine-glass", "../img/wine-glass.jpg");
+new Placeholder("banana", "../img/banana.jpg");
+new Placeholder("bathroom", "../img/bathroom.jpg");
 
 console.log("all Placeholders", Placeholder.all);
 
@@ -124,9 +155,9 @@ function showResultChart() {
           data: showCounts
         },
         {
-          label: "Vote %",
+          label: "Vote Count",
           backgroundColor: "rgb(0, 0, 0)",
-          data: votePercentage
+          data: voteCounts
         },
       ]
     },
