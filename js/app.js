@@ -35,8 +35,6 @@ function loadFromStorage() {
   console.log("fromStorage", Placeholder.all);
 }
 
-var lastViewed = [];
-
 function getNextImage() {
   // TODO: Write code to prevent the same random number being generated twice
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
@@ -50,6 +48,10 @@ function displayImages() {
     showResults();
     return;
   }
+
+  var lastViewed = [];
+
+  // Display image1
   var imageI = document.getElementById("product-1");
   var imageII = document.getElementById("product-2");
   var imageIII = document.getElementById("product-3");
@@ -74,6 +76,11 @@ function displayImages() {
     if (lastViewed.length > 3) {
       lastViewed.splice(0, 3);
     }
+
+    image1.showCount++;
+    image2.showCount++;
+    image3.showCount++;
+
     imageI.src = image1.src;
     imageII.src = image2.src;
     imageIII.src = image3.src;
@@ -92,7 +99,7 @@ for(var i =0; i < productImages.length; i++) {
     var clickedPlaceholder = event.target.currentPlaceholder;
     totalVoteCount++;
     console.log("click #" + totalVoteCount);
-    clickedPlaceholder.totalVoteCount++;
+    clickedPlaceholder.voteCount++;
     displayImages();
   });
 }
