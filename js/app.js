@@ -49,7 +49,7 @@ function displayImages() {
     return;
   }
 
-  var lastViewed = [];
+  var lastViewed = []
 
   // Display image1
   var imageI = document.getElementById("product-1");
@@ -123,7 +123,13 @@ new Placeholder("usb", "../img/usb.gif");
 new Placeholder("wine-glass", "../img/wine-glass.jpg");
 new Placeholder("banana", "../img/banana.jpg");
 new Placeholder("bathroom", "../img/bathroom.jpg");
-new Placeholder("puppy_poncho", "../img/puppy_poncho.jpg");
+new Placeholder("bubblegum", "../img/bubblegum.jpg");
+new Placeholder("chair", "../img/chair.jpg");
+new Placeholder("cthulhu", "../img/cthulhu.jpg");
+new Placeholder("dog-duck", "../img/dog-duck.jpg");
+new Placeholder("dragon", "../img/dragon.jpg");
+new Placeholder("shark", "../img/shark.jpg");
+new Placeholder("sweep", "../img/sweep.png");
 
 console.log("all Placeholders", Placeholder.all);
 
