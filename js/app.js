@@ -44,7 +44,7 @@ function getNextImage() {
 
 var totalVoteCount = 0;
 function displayImages() {
-  if (totalVoteCount >= 5) {
+  if (totalVoteCount >= 25) {
     showResults();
     return;
   }
@@ -111,6 +111,7 @@ new Placeholder("usb", "../img/usb.gif");
 new Placeholder("wine-glass", "../img/wine-glass.jpg");
 new Placeholder("banana", "../img/banana.jpg");
 new Placeholder("bathroom", "../img/bathroom.jpg");
+new Placeholder("puppy_poncho", "../img/puppy_poncho.jpg");
 
 console.log("all Placeholders", Placeholder.all);
 

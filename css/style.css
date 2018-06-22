@@ -1,16 +1,27 @@
+a {
+  border: solid;
+  padding: 10px;
+  color: rgb(23, 189, 50);
+  background-color: black;
+}
+
 body {
   padding-bottom: 100px;
   background: linear-gradient(to right, rgb(23, 189, 50), rgb(66, 134, 244), rgb(217, 66, 244));
+  max-width: 100%;
 }
 
 div {
   background: linear-gradient( rgb(23, 189, 50), rgb(66, 134, 244), rgb(217, 66, 244));
   font-size: 140%;
   text-align: center;
-  
+  margin-bottom: 10px;
+  font-size: 150%;
+  text-align: top;
 }
 
 div img {
+  margin: 30px;
   width: 30%;
 }
 
@@ -48,4 +59,5 @@ footer {
   right: 0;
   text-align: center;
   padding: 30;
+  color: rgb(23, 189, 50);
 }
