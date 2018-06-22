@@ -35,6 +35,8 @@ function loadFromStorage() {
   console.log("fromStorage", Placeholder.all);
 }
 
+var lastViewed = [];
+
 function getNextImage() {
   // TODO: Write code to prevent the same random number being generated twice
   var nextIndex = Math.floor(Math.random() * Placeholder.all.length);
@@ -48,35 +50,38 @@ function displayImages() {
     showResults();
     return;
   }
-
+  var imageI = document.getElementById("product-1");
+  var imageII = document.getElementById("product-2");
+  var imageIII = document.getElementById("product-3");
   // Display image1
-  var image1 = getNextImage();
+  do {
+    var image1 = getNextImage();
+  } while (lastViewed.includes(image1));
+  lastViewed.push(image1);
+
   var image2 = getNextImage();
-  var image3 = getNextImage();
-
-
-  var img1 = document.getElementById("product-1");
-  var img2 = document.getElementById("product-2");
-  var img3 = document.getElementById("product-3");
-
-  img1.src = image1.src;
-  img2.src = image2.src;
-  img3.src = image3.src;
-  
-  image1.showCount++;
-  image2.showCount++;
-  image3.showCount++;
-
-  img1.currentPlaceholder = image1;
-  img2.currentPlaceholder = image2;
-  img3.currentPlaceholder = image3;
-
-
-  while (image3 === image2 || image3 === image1) {
-    image3 = getNextImage();
+  while (lastViewed.includes(image2)) {
+   
+    image2 = getNextImage();
   }
- 
+  lastViewed.push(image2);
 
+    do {
+    var image3 = getNextImage();
+    } while (lastViewed.includes(image3));
+    lastViewed.push(image3);
+
+    if (lastViewed.length > 3) {
+      lastViewed.splice(0, 3);
+    }
+    imageI.src = image1.src;
+    imageII.src = image2.src;
+    imageIII.src = image3.src;
+
+    imageI.currentPlaceholder = image1;
+    imageII.currentPlaceholder = image2;
+    imageIII.currentPlaceholder = image3;
+    
   console.log("updated Placeholders", Placeholder.all);
 }
 
@@ -87,7 +92,7 @@ for(var i =0; i < productImages.length; i++) {
     var clickedPlaceholder = event.target.currentPlaceholder;
     totalVoteCount++;
     console.log("click #" + totalVoteCount);
-    clickedPlaceholder.voteCount++;
+    clickedPlaceholder.totalVoteCount++;
     displayImages();
   });
 }
