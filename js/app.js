@@ -44,39 +44,51 @@ function getNextImage() {
 
 var totalVoteCount = 0;
 function displayImages() {
-  if (totalVoteCount >= 5) {
+  if (totalVoteCount >= 25) {
     showResults();
     return;
   }
 
+  var lastViewed = []
+
   // Display image1
-  var image1 = getNextImage();
+  var imageI = document.getElementById("product-1");
+  var imageII = document.getElementById("product-2");
+  var imageIII = document.getElementById("product-3");
+  // Display image1
+  do {
+    var image1 = getNextImage();
+  } while (lastViewed.includes(image1));
+  lastViewed.push(image1);
+
   var image2 = getNextImage();
-  var image3 = getNextImage();
-
-
-  var img1 = document.getElementById("product-1");
-  var img2 = document.getElementById("product-2");
-  var img3 = document.getElementById("product-3");
-
-  img1.src = image1.src;
-  img2.src = image2.src;
-  img3.src = image3.src;
-  
-  image1.showCount++;
-  image2.showCount++;
-  image3.showCount++;
-
-  img1.currentPlaceholder = image1;
-  img2.currentPlaceholder = image2;
-  img3.currentPlaceholder = image3;
-
-
-  while (image3 === image2 || image3 === image1) {
-    image3 = getNextImage();
+  while (lastViewed.includes(image2)) {
+   
+    image2 = getNextImage();
   }
- 
+  lastViewed.push(image2);
 
+    do {
+    var image3 = getNextImage();
+    } while (lastViewed.includes(image3));
+    lastViewed.push(image3);
+
+    if (lastViewed.length > 3) {
+      lastViewed.splice(0, 3);
+    }
+
+    image1.showCount++;
+    image2.showCount++;
+    image3.showCount++;
+
+    imageI.src = image1.src;
+    imageII.src = image2.src;
+    imageIII.src = image3.src;
+
+    imageI.currentPlaceholder = image1;
+    imageII.currentPlaceholder = image2;
+    imageIII.currentPlaceholder = image3;
+    
   console.log("updated Placeholders", Placeholder.all);
 }
 
@@ -111,6 +123,13 @@ new Placeholder("usb", "../img/usb.gif");
 new Placeholder("wine-glass", "../img/wine-glass.jpg");
 new Placeholder("banana", "../img/banana.jpg");
 new Placeholder("bathroom", "../img/bathroom.jpg");
+new Placeholder("bubblegum", "../img/bubblegum.jpg");
+new Placeholder("chair", "../img/chair.jpg");
+new Placeholder("cthulhu", "../img/cthulhu.jpg");
+new Placeholder("dog-duck", "../img/dog-duck.jpg");
+new Placeholder("dragon", "../img/dragon.jpg");
+new Placeholder("shark", "../img/shark.jpg");
+new Placeholder("sweep", "../img/sweep.png");
 
 console.log("all Placeholders", Placeholder.all);
 
