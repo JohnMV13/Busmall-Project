@@ -33,6 +33,10 @@ section ul {
 
 }
 
+#resultsWrapper{
+  color: black;
+  text-decoration-color: black;
+}
 
 footer {
   display: inline;

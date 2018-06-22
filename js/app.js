@@ -1,39 +1,39 @@
 "use strict"
 
-// window.addEventListener("load", function onLoad() {
-//   loadFromStorage();
+window.addEventListener("load", function onLoad() {
+  loadFromStorage();
 
-//   if (Placeholder.all.length === 0) {
-//     initialize();
-//   }
-//   displayImages();
-// });
+  if (Placeholder.all.length === 0) {
+    initialize();
+  }
+  displayImages();
+});
 
-// function saveAll() {
-//   localStorage["voteHistpry"] = JSON.stringify({ voteCount: Placeholder.voteCount });
-//   localStorage("placeholders") = JSON.stringify(Placeholder.all);
-//   console.log(localStorage);
-// }
+function saveAll() {
+  localStorage["voteHistpry"] = JSON.stringify({ voteCount: Placeholder.voteCount });
+  localStorage("placeholders") = JSON.stringify(Placeholder.all);
+  console.log(localStorage);
+}
 
-// function loadFromStorage() {
-//   var jsonVoteHistoryString = localStorage["voteHistory"];
-//   if (jsonVoteHistoryString) {
-//     var voteHistory = JSON.parsel(jsonVoteHistoryString);
-//     Placeholder.voteCount = voteHistory.voteCount;
-//     console.log("setting voteCount to " + Placeholder.voteCount);
-//   }
+function loadFromStorage() {
+  var jsonVoteHistoryString = localStorage["voteHistory"];
+  if (jsonVoteHistoryString) {
+    var voteHistory = JSON.parsel(jsonVoteHistoryString);
+    Placeholder.voteCount = voteHistory.voteCount;
+    console.log("setting voteCount to " + Placeholder.voteCount);
+  }
 
-//   var jsonStringFromStorage = localStorage["placeholders"];
-//   if (!jsonStringFromStorage)
-//     return;
+  var jsonStringFromStorage = localStorage["placeholders"];
+  if (!jsonStringFromStorage)
+    return;
 
-//   var arrayFromStorage = JSON.parse(jsonStringFromStorage);
-//   for (var i = 0; i < arrayFromStorage.length; i++) {
-//     var arrayItem = arrayFromStorage[i];
-//     new Placeholder(arrayItem.name, arrayItem.src, arrayItem.showCount, arrayItem.voteCount);
-//   }
-//   console.log("fromStorage", Placeholder.all);
-// }
+  var arrayFromStorage = JSON.parse(jsonStringFromStorage);
+  for (var i = 0; i < arrayFromStorage.length; i++) {
+    var arrayItem = arrayFromStorage[i];
+    new Placeholder(arrayItem.name, arrayItem.src, arrayItem.showCount, arrayItem.voteCount);
+  }
+  console.log("fromStorage", Placeholder.all);
+}
 
 function getNextImage() {
   // TODO: Write code to prevent the same random number being generated twice
@@ -51,22 +51,31 @@ function displayImages() {
 
   // Display image1
   var image1 = getNextImage();
-  var img1 = document.getElementById("product-1");
-  img1.src = image1.src;
-  image1.showCount++;
-  img1.currentPlaceholder = image1;
-
   var image2 = getNextImage();
-  var img2 = document.getElementById("product-2");
-  img2.src = image2.src;
-  image2.showCount++;
-  img2.currentPlaceholder = image2;
-
   var image3 = getNextImage();
+
+
+  var img1 = document.getElementById("product-1");
+  var img2 = document.getElementById("product-2");
   var img3 = document.getElementById("product-3");
+
+  img1.src = image1.src;
+  img2.src = image2.src;
   img3.src = image3.src;
+  
+  image1.showCount++;
+  image2.showCount++;
   image3.showCount++;
+
+  img1.currentPlaceholder = image1;
+  img2.currentPlaceholder = image2;
   img3.currentPlaceholder = image3;
+
+
+  while (image3 === image2 || image3 === image1) {
+    image3 = getNextImage();
+  }
+ 
 
   console.log("updated Placeholders", Placeholder.all);
 }
